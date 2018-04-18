@@ -14,7 +14,7 @@ fake gdb use paramiko(ssh) to debug program on remote server, now use for Clion
 	if can not choise, please replace the Cygwin/Mingw's gdb.exe with our gdb.exe
 
 #### how to use:
-	compile your code with -g and run it with user in the gdb-remote-dubug/config.ini
+	compile your code with -g on server and run it with user in the gdb-remote-dubug/config.ini
 	use Clion make breakpoint
 	Clion:[run]-->[Attach to Local Process...] choise program that you run
 good luck
