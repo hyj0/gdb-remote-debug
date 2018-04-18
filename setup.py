@@ -3,8 +3,8 @@ import sys
 from PyInstaller import __main__ as PyInstallerMain
 
 if __name__ == "__main__":
-    configPath=os.path.join(os.path.dirname(sys.argv[0]), "config.ini")
-    configPlacePyFile = os.path.join(os.path.dirname(sys.argv[0]), "config_place.py")
+    configPath=os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), "config.ini")
+    configPlacePyFile = os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), "config_place.py")
     f = open(configPlacePyFile, "w")
     f.write("configFilePath=\"" + configPath  + "\"")
     f.close()
