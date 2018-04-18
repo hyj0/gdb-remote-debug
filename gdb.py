@@ -6,15 +6,22 @@ import ConfigParser
 
 sys.path.append(os.path.dirname(sys.argv[0]))
 import config_place
+import utils
 
 config = ConfigParser.ConfigParser()
 config.read(config_place.configFilePath)
 
-localMapPath = config.get("mapping", "localMapPath")
-localMapPathCygwin = config.get("mapping", "cygwinMapPath")
-serverMapPath = config.get("mapping", "serverMapPath")
-localEnv = config.get("mapping", "localEnv")
-localEnv = int(localEnv)
+localMapPath = utils.replaceLess(
+        config.get("mapping", "localMapPath").replace("\\", "/") + "/",
+        "//", "/")
+localMapPathCygwin = utils.replaceLess(
+        config.get("mapping", "cygwinMapPath").replace("\\", "/") + "/",
+        "//", "/")
+serverMapPath = utils.replaceLess(
+        config.get("mapping", "serverMapPath").replace("\\", "/") + "/",
+        "//", "/")
+localEnv = int(config.get("mapping", "localEnv"))
+
 
 class SSHCmd:
     def __init__(self, hostName, userName, password):
