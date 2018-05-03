@@ -2,7 +2,8 @@
 fake gdb use paramiko(ssh) to debug program on remote server, now use for Clion
 ### how to install:
 #### step1:
-    cd gdb-remote-debug dir
+	pip install PyInstaller paramiko ConfigParser
+	cd gdb-remote-debug dir
 	run: python setup.py
 #### step2:
 	copy gdb-remote-debug/dist/WinProcessListHelper.exe to Clion's install dir's bin/WinProcessListHelper.exe (backup it)
