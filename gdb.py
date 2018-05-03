@@ -14,6 +14,8 @@ config.read(config_place.configFilePath)
 localMapPath = utils.replaceLess(
         config.get("mapping", "localMapPath").replace("\\", "/") + "/",
         "//", "/")
+localMapPath = localMapPath[0].upper() + localMapPath[1:]
+
 tmpPath = localMapPath.replace(":", "")
 tmpPath = tmpPath[0].lower() + tmpPath[1:]
 localMapPathCygwin = "/cygdrive/" + tmpPath
