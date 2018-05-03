@@ -14,13 +14,14 @@ config.read(config_place.configFilePath)
 localMapPath = utils.replaceLess(
         config.get("mapping", "localMapPath").replace("\\", "/") + "/",
         "//", "/")
-localMapPathCygwin = utils.replaceLess(
-        config.get("mapping", "cygwinMapPath").replace("\\", "/") + "/",
-        "//", "/")
+tmpPath = localMapPath.replace(":", "")
+tmpPath = tmpPath[0].lower() + tmpPath[1:]
+localMapPathCygwin = "/cygdrive/" + tmpPath
+
 serverMapPath = utils.replaceLess(
         config.get("mapping", "serverMapPath").replace("\\", "/") + "/",
         "//", "/")
-localEnv = int(config.get("mapping", "localEnv"))
+localEnv = 1  # always use Mingw style path
 
 
 class SSHCmd:
@@ -78,6 +79,7 @@ class SSHCmd:
         thread.start_new_thread(doStdin, (chan,))
         doChan(chan)
         thread.exit_thread()
+
 
 if __name__ == "__main__":
     sshcmd = SSHCmd(config.get("server", "host"),
