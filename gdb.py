@@ -51,9 +51,12 @@ class SSHCmd:
                     sendBuff += d
                     sys.stderr.write(d)
                     if d == '\n':
-                        if buff.find("-break-insert -f") == 0 \
-                                or buff.find("-file-exec-and-symbols") == 0 \
-                                or buff.find("-environment-cd") == 0:
+                        if sendBuff.find("whatis/mt") > 0:
+                            sendBuff = sendBuff.replace("whatis/mt", "whatis")
+                        if sendBuff.find("-break-insert -f") == 0 \
+                                or sendBuff.find("-file-exec-and-symbols") == 0 \
+                                or sendBuff.find("-environment-cd") == 0 \
+                                or sendBuff.find("-exec-until --thread") == 0:
                             sendBuff = sendBuff.replace(localMapPath, serverMapPath)
                             sendBuff = sendBuff.replace(localMapPathCygwin, serverMapPath)
                         break
